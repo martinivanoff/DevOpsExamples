@@ -9,8 +9,6 @@ trigger:
       - main
   batch: true  
 
-
-
 jobs:
 
 - job:  BuildWPFApp
