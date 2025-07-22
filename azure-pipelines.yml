@@ -15,7 +15,8 @@ jobs:
 - job:  BuildWPFApp
 
   pool:
-    vmImage: 'windows-latest'
+    # vmImage: 'windows-latest'
+    name: MySelfHostedAgentPool
 
   variables:
     solution: '**/*.sln'
