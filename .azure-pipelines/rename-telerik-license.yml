@@ -1,0 +1,18 @@
+parameters:
+  displayName: 'Rename Telerik license file'
+  newFileName: 'telerik-license.txt'
+
+steps:
+- powershell: |
+    $appData = [Environment]::GetFolderPath('ApplicationData')
+    $folder = Join-Path $appData 'Telerik'
+    $source = Join-Path $folder 'telerik-license.txt'
+    $destination = Join-Path $folder ${{ parameters.newFileName }}
+
+    if (Test-Path $source) {
+        Rename-Item -Path $source -NewName (Split-Path $destination -Leaf)
+        Write-Host "File renamed successfully: $source → $destination"
+    } else {
+        Write-Host "Source file does not exist: $source"
+    }
+  displayName: ${{ parameters.displayName }}

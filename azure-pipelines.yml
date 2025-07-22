@@ -32,6 +32,11 @@ jobs:
     inputs:
       restoreSolution: '$(solution)'
 
+  - template: .azure-pipelines/rename-telerik-license.yml
+    parameters:
+      displayName: 'Rename Telerik license after main task'
+      newFileName: 'telerik-license-corrupted.txt'
+
   - task: VSBuild@1
     inputs:
       solution: '$(solution)'
