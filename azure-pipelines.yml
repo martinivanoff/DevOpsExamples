@@ -23,8 +23,6 @@ jobs:
     buildPlatform: 'Any CPU'
     buildConfiguration: 'Release'
 
-  
-
   steps:
   - task: NuGetToolInstaller@1
 
@@ -34,7 +32,7 @@ jobs:
 
   - template: .azure-pipelines/rename-telerik-license.yml
     parameters:
-      displayName: 'Rename Telerik license after main task'
+      displayName: 'Corrupt Telerik license file name'
       newFileName: 'telerik-license-corrupted.txt'
 
   - task: VSBuild@1
@@ -43,6 +41,11 @@ jobs:
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
 
+  - template: .azure-pipelines/rename-telerik-license.yml
+    parameters:
+      displayName: 'Restore Telerik license file name'
+      newFileName: 'telerik-license.txt'
+      
   - task: VSTest@2
     inputs:
       platform: '$(buildPlatform)'
