@@ -9,7 +9,7 @@ trigger:
       - main
   batch: true  
 
-
+lockBehavior: sequential
 
 jobs:
 
