@@ -11,8 +11,8 @@ steps:
 
     if (Test-Path $source) {
         Rename-Item -Path $source -NewName (Split-Path $destination -Leaf)
-        Write-Host "File renamed successfully: $source → $destination"
+        Write-Output "File renamed successfully: $source → $destination"
     } else {
-        Write-Host "Source file does not exist: $source"
+        Write-Output "Source file does not exist: $source"
     }
   displayName: ${{ parameters.displayName }}
