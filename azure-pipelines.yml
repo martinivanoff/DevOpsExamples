@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  name: Default
+  name: MySelfHostedAgentPool
 
 variables:
   solution: '**/*.sln'
