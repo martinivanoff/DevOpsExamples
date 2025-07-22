@@ -2,8 +2,8 @@
 # Build and run tests for .NET Desktop or Windows classic desktop solutions.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
-
 trigger:
+  batch: true
   branches:
     include: 
       - main
@@ -23,6 +23,8 @@ jobs:
     buildPlatform: 'Any CPU'
     buildConfiguration: 'Release'
 
+  
+
   steps:
   - task: NuGetToolInstaller@1
 
@@ -40,4 +42,10 @@ jobs:
     inputs:
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
+
+  - task: PublishPipelineArtifact@1
+    displayName: Publish ArtifactName Artifacts
+    inputs:
+      path: '$(System.DefaultWorkingDirectory)'
+      artifactName: artifactname
     
