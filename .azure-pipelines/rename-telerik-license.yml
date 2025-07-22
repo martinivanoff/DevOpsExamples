@@ -1,12 +1,13 @@
 parameters:
   displayName: 'Rename Telerik license file'
-  newFileName: 'telerik-license.txt'
+  currentFileName: 'telerik-license.txt'
+  newFileName: 'telerik-license-corrupted.txt'
 
 steps:
 - powershell: |
     $appData = [Environment]::GetFolderPath('ApplicationData')
     $folder = Join-Path $appData 'Telerik'
-    $source = Join-Path $folder 'telerik-license.txt'
+    $source = Join-Path $folder ${{ parameters.currentFileName }}
     $destination = Join-Path $folder ${{ parameters.newFileName }}
 
     if (Test-Path $source) {
