@@ -5,7 +5,10 @@
 lockBehavior: sequential
 
 trigger:
-- main
+  batch: true
+  branches:
+    include:
+    - Development
 
 jobs:
 
